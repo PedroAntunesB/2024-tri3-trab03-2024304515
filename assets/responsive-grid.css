@@ -9,7 +9,7 @@ aside {
 main {
     grid-area: content;
 
-    h2{
+    h2 {
         text-align: center;
     }
 }
@@ -32,7 +32,7 @@ main .fotos {
     border: 1px solid rgb(0, 0, 0);
     padding: 1rem;
     display: grid;
-    gap: 1rem;
+    gap: 0.5rem;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
 
@@ -47,11 +47,27 @@ main .fotos>div {
         grid-template-rows: 100px 100px 1fr 100px;
         grid-template-areas: "header" "aside" "content" "footer";
     }
-    aside{
+
+    aside {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
         text-align: center;
         font-size: medium;
     }
+
+}
+
+.fotos div {
+    display: grid;
+    grid-column: repat(auto-fill, 20, 100px);
+    grid-row: repeat(auto-fill, 2, 100px);
+}
+
+.fotos>div:first-child {
+    /* atividade 004 */
+    grid-row: span 2;
+    grid-column: span 2;
+    width: 200px;
+    height: 200px;
 }
