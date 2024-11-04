@@ -84,3 +84,29 @@ img {
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
 }
+
+.gallery-image-modal {
+    background-color: #F99FC9;
+    color: #ce0058;
+    border-radius: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+.bt-close {
+    border-radius: 15%;
+}
+.gallery-image-modal img {
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+}
+/* position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); */
