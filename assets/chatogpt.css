@@ -42,6 +42,6 @@ main .message.owner {
 }
 
 footer {
-    display: grid;
+    display: grid;  
     grid-template-columns: 1fr auto;
 }

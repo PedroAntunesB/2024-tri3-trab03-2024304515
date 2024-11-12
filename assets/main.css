@@ -130,3 +130,8 @@ img {
     transform: scale(1.2);
     color: rgb(179, 16, 43);
 }
+
+.content img{
+    width: 40vw;
+    height: 50vh;
+}

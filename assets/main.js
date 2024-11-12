@@ -2,35 +2,41 @@ const galleryImageModal = document.querySelector('.gallery-image-modal')
 const galleryBtClose = galleryImageModal.querySelector('.bt-close')
 
 galleryImageModal.showModal()
-galleryImageModal.addEventListener('click', () => {
-    galleryImageModal.close()
+galleryBtClose.addEventListener('click', () => {
+  galleryImageModal.close()
 })
-
 
 const img = document.querySelectorAll('img')
 const content = document.querySelector('.content')
-let antes = document.querySelector('.antes')
-img.forEach((img) => {
-    img.addEventListener('click', () => {
-        content.innerHTML = `<img src="${img.src}" alt="${img.alt}" style="width: 20vw; height: auto;">`
-        galleryImageModal.showModal()
-    })
-})
-
-const galleryContent = galleryImageModal.querySelector('.content')
+const btprev = document.querySelector('.antes')
+const btnext = galleryImageModal.querySelector('.depois')
 const imgs = document.querySelectorAll('.fotos img')
-const galleryBtNext = galleryImageModal.querySelector('.depois')
-let nextImg = null //vai pegar a proxima imagem
+const arrayelements = Array.from(imgs)
+let i = 0
 
-galleryBtNext.addEventListener('click', () => {
-    galleryImageModal.close()
-    nextImg.click()
+img.forEach((imgElement, index) => {
+  imgElement.addEventListener('click', () => {
+    content.innerHTML = `<img src="${imgElement.src}" alt="${imgElement.alt}" style="width: 40vw; height: 50vh;">`
+    galleryImageModal.showModal()
+
+    i = arrayelements.indexOf(imgElement)
+  })
+})
+btnext.addEventListener('click', () => {
+  if (i >= 0 && i < arrayelements.length - 1) {
+    i++
+    content.innerHTML = `<img src="${arrayelements[i].src}" alt="${arrayelements[i].alt}" style="width: 40vw; height: 50vh;">`
+  }
 })
 
-imgs.forEach(img => {
-  img.addEventListener('click', () => {
-    nextImg = img.parentNode.nextElementSibling.querySelector('img') // DICASSSS
-    galleryContent.innerHTML = `<img src="${nextImg.src}" alt="${nextimg.alt}">`
-    galleryImageModal.showModal()
-  })
-})  
+btprev.addEventListener('click', () => {
+  if (i >= 0 && i < arrayelements.length - 1) {
+    i--
+    content.innerHTML = `<img src="${arrayelements[i].src}" alt="${arrayelements[i].alt}" style="width: 40vw; height: 50vh;">`
+    console.log(i)
+    console.log(arrayelements[i].src)
+    console.log('imagem mudada')
+  } else {
+    console.log('nao tem mais imagens')
+  }
+})
