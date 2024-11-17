@@ -108,30 +108,34 @@ img {
 .gallery-image-modal .content img {
     max-height: 50vh;
     max-width: 100%;
-} 
-.antes{
+}
+
+.antes {
     float: inline-start;
 }
-.depois{
+
+.depois {
     float: inline-end;
 }
 
-.depois, .antes {
+.depois,
+.antes {
     border-radius: 10px;
     width: 5vw;
-    height: 5vh ;
+    height: 5vh;
     color: red;
     background-color: violet;
     display: inline-block;
     transition: transform 0.3s;
 }
 
-.depois:hover, .antes:hover {
+.depois:hover,
+.antes:hover {
     transform: scale(1.2);
     color: rgb(179, 16, 43);
 }
 
-.content img{
+.content img {
     width: 40vw;
     height: 50vh;
 }

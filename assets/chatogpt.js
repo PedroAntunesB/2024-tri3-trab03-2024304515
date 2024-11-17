@@ -1,23 +1,35 @@
-atualizarRelogio()
-function atualizarRelogio() {
-    const time = document.querySelectorAll('.time')
-    var agora = new Date()
-    var hora = agora.getHours()
-    var minuto = agora.getMinutes()
-    time.forEach((time) => {
-        time.innerHTML = `${hora}:${minuto}`
-    })
+const main = document.querySelector('main')
+const input = document.querySelector('input')
+const button = document.querySelector('button')
+
+let currentNick = null
+
+function addMessage(content, nick, time) {
+    main.innerHTML += `
+    <div class="message ${currentNick == nick ? 'owner' : ''}">
+      <div class="content">${content}</div>
+      <div class="nick">${nick}</div>
+      <div class="time">${time}</div>
+    </div>
+  `
 }
 
-const btenv = document.querySelector('.enviar')
-const msgO = document.querySelector('.message.owner')
-const main = document.querySelector('main')
+const ws = new WebSocket('ws://localhost:4000')
 
-btenv.addEventListener('click', () => {
-    const input = document.querySelector('input').value
-    dup = msgO.cloneNode(true)
-    main.appendChild(dup)
-    const content = dup.querySelector('.contentowner')
-    atualizarRelogio()
-    content.innerHTML = `${input}`
+ws.addEventListener("open", () => console.log('Conectado'))
+ws.addEventListener("close", () => console.log('Desconectado'))
+
+ws.addEventListener("message", (event) => {
+    const data = JSON.parse(event.data)
+    addMessage(data.message, data.nick, data.timestamp)
+})
+
+button.addEventListener('click', () => {
+    const message = input.value
+    if (message.startsWith("/nick ")) {
+        currentNick = message.split(' ')[1]
+        document.querySelector('h1').innerText = `Usuário ${currentNick}`
+    }
+    ws.send(message)
+    input.value = ''
 })

@@ -17,7 +17,7 @@ header {
     padding: 0 20px;
     background-color: #D3D3D3;
     color: rgb(0, 0, 0);
-    
+
 }
 
 main .message {
@@ -39,18 +39,18 @@ main .message .time {
 
 main .message.owner {
     justify-self: end;
-    background-color : #fa6ee7;
+    background-color: #fa6ee7;
     color: rgb(0, 0, 0);
 }
 
 footer {
-    display: grid;  
+    display: grid;
     grid-template-columns: 1fr auto;
-}   
+}
 
-img{
+img {
     width: auto;
     height: auto;
     border-radius: 50%;
-    padding: 10px;  
+    padding: 10px;
 }
